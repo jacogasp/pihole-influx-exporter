@@ -12,7 +12,7 @@ project(pihole-influx-exporter)
 set(CMAKE_CXX_STANDARD 20)
 
 find_package(unofficial-curlpp CONFIG REQUIRED)
-find_package(Boost REQUIRED COMPONENTS json)
+find_package(Boost REQUIRED COMPONENTS json asio)
 find_package(InfluxDB CONFIG REQUIRED)
 find_package(fmt CONFIG REQUIRED)
 
@@ -22,12 +22,14 @@ add_executable(pihole-influx-exporter
   src/data.cpp
   src/pihole.cpp
   src/influxdb.cpp
+  src/timer.cpp
 )
 target_link_libraries(
   pihole-influx-exporter
   PRIVATE 
   unofficial::curlpp::curlpp
   Boost::json
+  Boost::asio
   InfluxData::InfluxDB
   fmt::fmt
   )

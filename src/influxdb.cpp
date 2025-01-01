@@ -20,7 +20,7 @@ void InfluxDB::send_data(Data const& data)
     auto influxdb = influxdb::InfluxDBFactory::Get(m_url);
     influxdb->write(std::move(measurement));
     std::cout << fmt::format(
-        "data sent. found {} dns_queries and {} ads blocked\n",
+        "Found {} dns queries and {} blocked ads. Data sent.\n",
         data.domains_over_time, data.ads_over_time);
   } catch (std::exception const& e) {
     std::cout << "An exception occurred sending data to InfluxDB: " << e.what()
