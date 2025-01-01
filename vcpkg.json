@@ -1,0 +1,4 @@
+{
+  "name": "pihole-influx-exporter",
+  "dependencies": ["boost-json", "curlpp", "influxdb-cxx", "fmt"]
+}

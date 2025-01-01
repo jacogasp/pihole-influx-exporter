@@ -1,0 +1,37 @@
+{
+  "name": "C++",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "mounts": [
+    "source=${localWorkspaceFolder}/rootCA.pem,target=/etc/pki/ca-trust/source/anchors/homeCA.pem,type=bind,consistency=cached"
+  ],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-vscode.cpptools",
+        "ms-vscode.cpptools-extension-pack",
+        "ms-vscode.cmake-tools",
+        "eamodio.gitlens",
+        "wayou.vscode-todo-highlight",
+        "GitLab.gitlab-workflow"
+      ],
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "/bin/bash": null
+        },
+        // for macOS users: https://github.com/microsoft/vscode/issues/174632
+        "extensions.verifySignature": false
+      }
+    }
+  },
+  "features": {
+    "git": "os-provided"
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "sudo update-ca-trust",
+  "runArgs": [
+    "--env-file",
+    "${localWorkspaceFolder}/.env"
+  ]
+}
