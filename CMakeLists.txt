@@ -18,6 +18,10 @@ find_package(fmt CONFIG REQUIRED)
 
 add_executable(pihole-influx-exporter
   src/main.cpp
+  src/config.cpp
+  src/data.cpp
+  src/pihole.cpp
+  src/influxdb.cpp
 )
 target_link_libraries(
   pihole-influx-exporter
