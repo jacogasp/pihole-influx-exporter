@@ -18,6 +18,8 @@ jobs:
       - name: Build devcontainer
         run: docker build .devcontainer -t devcontainer
       - name: Build pihole-influx-exporter
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/workspace devcontainer \
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
       - name: Build Docker image
         run: docker build . -t jacogasp/pihole-influx-exporter
