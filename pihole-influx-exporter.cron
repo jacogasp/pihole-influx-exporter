@@ -1,1 +1,0 @@
-*/10 * * * * /usr/local/bin/pihole-influx-exporter >> /var/log/pihole-influx-exporter.log 2>&1
