@@ -1,6 +1,7 @@
 {
   "name": "pihole-influx-exporter",
   "dependencies": [
+    "boost-algorithm",
     "boost-json", 
     "boost-asio",
     "curlpp", 

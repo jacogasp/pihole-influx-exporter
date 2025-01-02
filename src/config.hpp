@@ -7,7 +7,7 @@
 
 struct Config
 {
-  std::string hostname;
+  std::string pihole_host;
   std::string influxdb_url;
   std::string pihole_endpoint;
   std::string pihole_token;
@@ -16,8 +16,8 @@ struct Config
   static Config make_from_env()
   {
     Config config{};
-    if (auto const hostname = std::getenv("HOSTNAME")) {
-      config.hostname = hostname;
+    if (auto const host = std::getenv("PIHOLE_HOST")) {
+      config.pihole_host = host;
     }
     if (auto const url = std::getenv("INFLUXDB_URL")) {
       config.influxdb_url = url;

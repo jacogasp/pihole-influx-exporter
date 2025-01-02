@@ -7,10 +7,10 @@
 class InfluxDB
 {
   std::string m_url;
-  std::string m_hostname;
+  std::string m_host;
 
  public:
-  InfluxDB(std::string_view url, std::string_view hostname);
+  InfluxDB(std::string_view url, std::string_view host);
   void send_data(Data const& data);
 };
 

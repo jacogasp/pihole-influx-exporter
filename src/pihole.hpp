@@ -11,12 +11,12 @@
 class PiHole
 {
  private:
-  std::string m_url;
-  std::optional<boost::json::object> curl_stats();
+  std::string m_endpoint;
+  std::optional<boost::json::object> curl_api(std::string const& query);
 
  public:
   PiHole(std::string_view endpoint, std::string_view token);
-  Data poll_data();
+  std::optional<Data> poll_data();
 };
 
 #endif
