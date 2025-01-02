@@ -15,6 +15,7 @@ using querytypes_t           = std::vector<std::pair<std::string, double>>;
 
 struct Data
 {
+  std::string status;
   int ads_blocked_today;
   double ads_percentage_today;
   int clients_ever_seen;

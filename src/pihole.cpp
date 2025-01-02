@@ -46,8 +46,11 @@ std::optional<Data> PiHole::poll_data()
     return std::nullopt;
   }
   auto& jo = jo_opt.value();
-
+  
+  std::string status{jo["status"].as_string().begin(),
+                     jo["status"].as_string().end()};
   Data data{
+      status,
       static_cast<int>(jo["ads_blocked_today"].as_int64()),
       jo["ads_percentage_today"].as_double(),
       static_cast<int>(jo["clients_ever_seen"].as_int64()),

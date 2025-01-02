@@ -14,6 +14,7 @@ auto make_summary(Data const& data, std::string_view host)
 {
   influxdb::Point summary{"summary"};
   summary.addTag("host", host);
+  summary.addField("pihole_status", data.status);
   summary.addField("pihole_ads_blocked_today", data.ads_blocked_today);
   summary.addField("pihole_ads_percentage_today", data.ads_percentage_today);
   summary.addField("pihole_clients_ever_seen", data.clients_ever_seen);
