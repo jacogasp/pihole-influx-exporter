@@ -82,7 +82,7 @@ void make_querytypes(auto influxdb, Data const& data, std::string_view host)
   for (auto&& qt : data.querytypes) {
     influxdb::Point measure{MEASUREMENT_NAME};
     measure.addTag("host", host);
-    measure.addTag("domain", qt.first);
+    measure.addTag("type", qt.first);
     measure.addField("querytypes", qt.second);
     influxdb->write(std::move(measure));
   }
