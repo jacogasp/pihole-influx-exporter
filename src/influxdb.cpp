@@ -92,12 +92,14 @@ void InfluxDB::send_data(Data const& data)
 {
   try {
     auto influxdb = influxdb::InfluxDBFactory::Get(m_url);
+    influxdb->batchOf(128);
     make_summary(influxdb.get(), data, m_host);
     make_top_queries(influxdb.get(), data, m_host);
     make_top_ads(influxdb.get(), data, m_host);
     make_top_sources(influxdb.get(), data, m_host);
     make_forward_destinations(influxdb.get(), data, m_host);
     make_querytypes(influxdb.get(), data, m_host);
+    influxdb->flushBatch();
     print_data(data);
     std::cout << "data sent to influxdb." << std::endl;
   } catch (std::exception const& e) {
