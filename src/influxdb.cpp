@@ -59,7 +59,7 @@ void make_top_sources(auto influxdb, Data const& data, std::string_view host)
   for (auto&& source : data.top_sources) {
     influxdb::Point measure{MEASUREMENT_NAME};
     measure.addTag("host", host);
-    measure.addTag("domain", source.first);
+    measure.addTag("source", source.first);
     measure.addField("top_sources", source.second);
     influxdb->write(std::move(measure));
   }
