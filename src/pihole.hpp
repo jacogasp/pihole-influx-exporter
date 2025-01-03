@@ -1,12 +1,11 @@
 #ifndef PIHOLE_HPP
 #define PIHOLE_HPP
 
+#include <boost/json.hpp>
 #include <optional>
 #include <string>
 
 #include "data.hpp"
-
-#include <boost/json.hpp>
 
 class PiHole
 {

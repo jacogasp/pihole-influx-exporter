@@ -29,7 +29,6 @@ class Timer
  private:
   void handle_timeout()
   {
-    using boost::asio::deferred;
     auto duration = std::chrono::seconds(m_timeout);
     m_timer.expires_after(duration);
     m_timer.async_wait([&](auto error_code) {
